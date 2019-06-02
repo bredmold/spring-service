@@ -1,21 +1,20 @@
 package com.github.bredmold.spring.service.controller
 
-import javax.ws.rs.GET
-import javax.ws.rs.Path
-import javax.ws.rs.Produces
-import javax.ws.rs.core.MediaType
+import org.springframework.http.MediaType
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 
-@Path('/')
+@RestController
+@RequestMapping('/')
 class HelloController {
-    @GET
-    @Path('hello')
+    @GetMapping('hello')
     String hello() {
         return 'hello'
     }
 
-    @GET
-    @Path('json')
-    @Produces(MediaType.APPLICATION_JSON)
+    @GetMapping(path = 'json',
+            produces = MediaType.APPLICATION_JSON_VALUE)
     json() {
         [
                 hello: 'hello'
