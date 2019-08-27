@@ -22,23 +22,26 @@ repositories {
 
 test {
     useJUnitPlatform()
+    reports {
+        junitXml.enabled = true
+        html.enabled = false
+    }
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.5.7'
+    compile 'org.codehaus.groovy:groovy-all:2.5.8'
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 
     final junitVersion = '5.4.2'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVersion
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.7.22'
-    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.9.1'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVersion
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.7.22'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.9.1'
 
-    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
-
+    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter', version: junitVersion
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11

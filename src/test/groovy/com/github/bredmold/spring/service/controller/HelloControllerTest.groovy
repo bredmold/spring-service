@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.MvcResult
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 
 import static org.assertj.core.api.Assertions.assertThat
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -21,8 +22,8 @@ class HelloControllerTest {
 
     @Test
     void hello() {
-        MvcResult result = mockMvc.perform(get('hello'))
-                .andDo(print())
+        MvcResult result = mockMvc.perform(get('/hello'))
+                .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
                 .andReturn()
 
@@ -31,8 +32,8 @@ class HelloControllerTest {
 
     @Test
     void json() {
-        MvcResult result = mockMvc.perform(get('json'))
-                .andDo(print())
+        MvcResult result = mockMvc.perform(get('/json'))
+                .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
                 .andReturn()
 
